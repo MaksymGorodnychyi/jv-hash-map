@@ -38,9 +38,8 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         while (current != null) {
             if (keysEqual(key, current.key)) {
                 return current.value;
-            } else {
-                current = current.next;
             }
+            current = current.next;
         }
         return null;
     }
@@ -79,7 +78,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         private V value;
         private Node<K, V> next;
 
-        public Node(K key, V value, Node<K, V> next) {
+        private Node(K key, V value, Node<K, V> next) {
             this.key = key;
             this.value = value;
             this.next = next;
