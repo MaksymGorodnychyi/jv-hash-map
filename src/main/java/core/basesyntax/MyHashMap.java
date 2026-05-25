@@ -63,11 +63,12 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     private void resize() {
         Node<K, V>[] oldTable = table;
         table = new Node[oldTable.length * 2];
-        size = 0;
         for (Node<K, V> node : oldTable) {
             while (node != null) {
                 Node<K, V> next = node.next;
-                put(node.key, node.value);
+                int index = getIndex(node.key);
+                node.next = table[index];
+                table[index] = node;
                 node = next;
             }
         }
